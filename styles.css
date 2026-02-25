@@ -1,0 +1,504 @@
+/* ============================================
+   Benefits of AI in Frontend Development
+   Presentation Styles
+   ============================================ */
+
+:root {
+  /* Color palette - Teal → Green → Yellow gradient theme */
+  --bg-gradient: linear-gradient(
+    90deg,
+    rgba(42, 123, 155, 1) 0%,
+    rgba(87, 199, 133, 1) 50%,
+    rgba(237, 221, 83, 1) 100%
+  );
+  --color-teal: #2a7b9b;
+  --color-green: #57c785;
+  --color-yellow: #eddd53;
+  --bg-primary: #2a7b9b;
+  --bg-card: rgba(255, 255, 255, 0.92);
+  --bg-card-hover: rgba(255, 255, 255, 0.98);
+  --accent-primary: #1e5f74;
+  --accent-secondary: #2d8a5e;
+  --accent-tertiary: #c4a82a;
+  --text-primary: #0f172a;
+  --text-secondary: #1e293b;
+  --text-muted: #475569;
+  --border-subtle: rgba(15, 23, 42, 0.12);
+  --glow-teal: rgba(42, 123, 155, 0.5);
+  --glow-green: rgba(87, 199, 133, 0.4);
+
+  /* Typography */
+  --font-sans: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Spacing & Sizing */
+  --slide-padding: clamp(2rem, 5vw, 4rem);
+  --max-content-width: 720px;
+  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle overlay for depth */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 50%,
+    rgba(255, 255, 255, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================
+   Presentation Layout
+   ============================================ */
+
+.presentation {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* Progress bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.35);
+  z-index: 100;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    var(--color-teal),
+    var(--color-green),
+    var(--color-yellow)
+  );
+  transition: width var(--transition-smooth);
+}
+
+/* Slide counter */
+.slide-counter {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  z-index: 100;
+}
+
+.slide-counter span {
+  color: var(--text-secondary);
+}
+
+/* Navigation hint */
+.nav-hint {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 100;
+}
+
+.nav-hint kbd {
+  display: inline-block;
+  padding: 0.2rem 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Slides
+   ============================================ */
+
+.slides-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--slide-padding);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(40px);
+  transition:
+    opacity var(--transition-smooth),
+    transform var(--transition-smooth),
+    visibility 0s linear var(--transition-smooth);
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition:
+    opacity var(--transition-smooth),
+    transform var(--transition-smooth);
+  z-index: 10;
+}
+
+.slide.prev {
+  transform: translateX(-40px);
+}
+
+.slide.next {
+  transform: translateX(40px);
+}
+
+.slide-content {
+  width: 100%;
+  max-width: var(--max-content-width);
+  animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-number {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-teal);
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.slide-content h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-primary);
+}
+
+.slide-content h2 .icon {
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 12px var(--glow-teal));
+}
+
+/* Benefits list */
+.benefits-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.benefits-list li {
+  position: relative;
+  padding: 1rem 1.25rem;
+  padding-left: 2.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.benefits-list li::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--bg-gradient);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--glow-teal);
+}
+
+.benefits-list li:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(42, 123, 155, 0.4);
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+/* ============================================
+   Title Slide
+   ============================================ */
+
+.title-slide {
+  text-align: center;
+}
+
+.title-slide .badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: var(--bg-gradient);
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(15, 23, 42, 0.3);
+  border-radius: 100px;
+  margin-bottom: 2rem;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.2);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.title-slide h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  text-shadow: 0 2px 20px rgba(15, 23, 42, 0.15);
+}
+
+.title-slide .subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title-slide .scroll-hint {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.title-slide .scroll-hint kbd {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-family: var(--font-mono);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  margin: 0 0.2rem;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Closing Slide
+   ============================================ */
+
+.closing-slide {
+  text-align: center;
+}
+
+.closing-slide .badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  border: 2px solid rgba(42, 123, 155, 0.6);
+  background: var(--bg-card);
+  border-radius: 100px;
+  margin-bottom: 2rem;
+}
+
+.closing-slide blockquote {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  padding: 2rem;
+  position: relative;
+}
+
+.closing-slide blockquote::before,
+.closing-slide blockquote::after {
+  content: '"';
+  font-size: 4rem;
+  position: absolute;
+  color: var(--color-teal);
+  opacity: 0.4;
+  font-family: Georgia, serif;
+}
+
+.closing-slide blockquote::before {
+  top: -0.5rem;
+  left: 0;
+}
+
+.closing-slide blockquote::after {
+  bottom: -2rem;
+  right: 0;
+}
+
+.closing-slide .gradient-text {
+  font-size: 2rem;
+  font-weight: 600;
+  background: linear-gradient(
+    90deg,
+    var(--color-teal),
+    var(--color-green),
+    var(--color-yellow)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   Navigation Buttons
+   ============================================ */
+
+.nav-btn {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.15);
+}
+
+.nav-btn:hover {
+  color: var(--color-teal);
+  border-color: var(--color-teal);
+  box-shadow: 0 0 24px var(--glow-teal);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.nav-btn:active {
+  transform: translateY(-50%) scale(0.98);
+}
+
+.nav-prev {
+  left: 1.5rem;
+}
+
+.nav-next {
+  right: 1.5rem;
+}
+
+/* Hide prev on first slide, next on last slide */
+.presentation.first-slide .nav-prev {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.presentation.last-slide .nav-next {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .nav-hint {
+    display: none;
+  }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-prev {
+    left: 1rem;
+  }
+
+  .nav-next {
+    right: 1rem;
+  }
+
+  .slide-counter {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .benefits-list li {
+    padding: 0.875rem 1rem;
+    padding-left: 2rem;
+    font-size: 1rem;
+  }
+}

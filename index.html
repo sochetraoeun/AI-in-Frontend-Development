@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benefits of AI in Frontend Development</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="presentation">
+      <!-- Progress bar -->
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <!-- Slide counter -->
+      <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">12</span>
+      </div>
+
+      <!-- Navigation hints -->
+      <div class="nav-hint">
+        <kbd>←</kbd> <kbd>→</kbd> or <kbd>Space</kbd> to navigate
+      </div>
+
+      <!-- Slides container -->
+      <div class="slides-container">
+        <!-- Slide 1: Title -->
+        <section class="slide active" data-slide="1">
+          <div class="slide-content title-slide">
+            <span class="badge">Frontend × AI</span>
+            <h1>Benefits of AI in Frontend Development</h1>
+            <p class="subtitle">
+              How AI enhances productivity, learning, and code quality
+            </p>
+            <div class="scroll-hint">
+              Press <kbd>→</kbd> or <kbd>Space</kbd> to start
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 2: Faster Development Speed -->
+        <section class="slide" data-slide="2">
+          <div class="slide-content">
+            <span class="slide-number">01</span>
+            <h2><span class="icon">⚡</span> Faster Development Speed</h2>
+            <ul class="benefits-list">
+              <li>Generate components quickly</li>
+              <li>Scaffold boilerplate code</li>
+              <li>Reduce repetitive typing</li>
+              <li>Speed up feature implementation</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Slide 3: Increased Productivity -->
+        <section class="slide" data-slide="3">
+          <div class="slide-content">
+            <span class="slide-number">02</span>
+            <h2><span class="icon">📈</span> Increased Productivity</h2>
+            <ul class="benefits-list">
+              <li>Automates repetitive tasks</li>
+              <li>Suggests code improvements</li>
+              <li>Helps multitask efficiently</li>
+              <li>Reduces context switching (less Googling)</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Slide 4: Better Code Quality -->
+        <section class="slide" data-slide="4">
+          <div class="slide-content">
+            <span class="slide-number">03</span>
+            <h2><span class="icon">✨</span> Better Code Quality</h2>
+            <ul class="benefits-list">
+              <li>Suggests clean code structure</li>
+              <li>Improves naming conventions</li>
+              <li>Detects potential bugs</li>
+              <li>Recommends best practices</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Slide 5: Faster Debugging -->
+        <section class="slide" data-slide="5">
+          <div class="slide-content">
+            <span class="slide-number">04</span>
+            <h2><span class="icon">🔧</span> Faster Debugging</h2>
+            <ul class="benefits-list">
+              <li>Explains error messages clearly</li>
+              <li>Suggests possible fixes</li>
+              <li>Reduces time spent searching solutions</li>
+              <li>Helps understand TypeScript errors</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Slide 6: Improved Learning -->
+        <section class="slide" data-slide="6">
+          <div class="slide-content">
+            <span class="slide-number">05</span>
+            <h2>
+              <span class="icon">📚</span> Improved Learning & Skill Growth
+            </h2>
+            <ul class="benefits-list">
+              <li>Explains complex concepts</li>
+              <li>Breaks down regex and logic</li>
+              <li>Acts like a coding mentor</li>
+              <li>Helps junior developers grow faster</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Slide 7: UI & Component Generation -->
+        <section class="slide" data-slide="7">
+          <div class="slide-content">
+            <span class="slide-number">06</span>
+            <h2><span class="icon">🎨</span> UI & Component Generation</h2>
+            <ul class="benefits-list">
+              <li>Convert idea → component</li>
+              <li>Generate layout with Tailwind / CSS</li>
+              <li>Suggest reusable component patterns</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Slide 8: Better Requirement Understanding -->
+        <section class="slide" data-slide="8">
+          <div class="slide-content">
+            <span class="slide-number">07</span>
+            <h2>
+              <span class="icon">📋</span> Better Requirement Understanding
+            </h2>
+            <ul class="benefits-list">
+              <li>Convert business requirement → technical tasks</li>
+              <li>Identify edge cases</li>
+              <li>Suggest validation rules</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Slide 9: Refactoring & Optimization -->
+        <section class="slide" data-slide="9">
+          <div class="slide-content">
+            <span class="slide-number">08</span>
+            <h2><span class="icon">🔄</span> Refactoring & Optimization</h2>
+            <ul class="benefits-list">
+              <li>Improve performance patterns</li>
+              <li>Suggest cleaner architecture</li>
+              <li>Reduce duplicated logic</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Slide 10: Code Review Assistance -->
+        <section class="slide" data-slide="10">
+          <div class="slide-content">
+            <span class="slide-number">09</span>
+            <h2><span class="icon">👀</span> Code Review Assistance</h2>
+            <ul class="benefits-list">
+              <li>Provide second opinion</li>
+              <li>Suggest improvements</li>
+              <li>Detect potential issues before PR</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Slide 11: Increased Confidence -->
+        <section class="slide" data-slide="11">
+          <div class="slide-content">
+            <span class="slide-number">10</span>
+            <h2><span class="icon">💪</span> Increased Confidence</h2>
+            <ul class="benefits-list">
+              <li>Quick verification of logic</li>
+              <li>Alternative solutions</li>
+              <li>Reduce uncertainty during development</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Slide 12: Closing -->
+        <section class="slide" data-slide="12">
+          <div class="slide-content closing-slide">
+            <span class="badge">Key Takeaway</span>
+            <blockquote>
+              AI does not replace frontend developers.<br />
+              It enhances productivity, learning, and code quality.
+            </blockquote>
+            <div class="closing-decoration">
+              <span class="gradient-text">Thank you</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Navigation arrows -->
+      <button class="nav-btn nav-prev" id="prevBtn" aria-label="Previous slide">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button class="nav-btn nav-next" id="nextBtn" aria-label="Next slide">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
