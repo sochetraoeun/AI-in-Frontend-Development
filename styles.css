@@ -253,7 +253,8 @@ body::before {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  line-height: 1.5;
   color: var(--text-secondary);
   transition: all 0.3s ease;
   -webkit-backdrop-filter: blur(10px);
@@ -264,8 +265,7 @@ body::before {
   content: "";
   position: absolute;
   left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 1.25rem;
   width: 6px;
   height: 6px;
   background: var(--bg-gradient);
