@@ -24,6 +24,43 @@
         <span id="currentSlide">1</span> / <span id="totalSlides">9</span>
       </div>
 
+      <!-- Fullscreen toggle -->
+      <button
+        class="fullscreen-btn"
+        id="fullscreenBtn"
+        aria-label="Toggle fullscreen"
+      >
+        <svg
+          class="icon-expand"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+        </svg>
+        <svg
+          class="icon-exit"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="display: none"
+        >
+          <path
+            d="M9 9V4.5M9 9H4.5M9 9L3.75 3.75M9 15v4.5M9 15H4.5M9 15l-4.5 4.5M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5M15 15l4.5 4.5"
+          />
+        </svg>
+      </button>
+
       <!-- Navigation hints -->
       <div class="nav-hint">
         <kbd>←</kbd> <kbd>→</kbd> or <kbd>Space</kbd> to navigate

@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentSlideEl = document.getElementById("currentSlide");
   const totalSlidesEl = document.getElementById("totalSlides");
   const presentation = document.querySelector(".presentation");
+  const fullscreenBtn = document.getElementById("fullscreenBtn");
 
   let currentIndex = 0;
   const totalSlides = slides.length;
@@ -74,6 +75,32 @@ document.addEventListener("DOMContentLoaded", () => {
   // Button events
   prevBtn.addEventListener("click", prevSlide);
   nextBtn.addEventListener("click", nextSlide);
+
+  // Fullscreen toggle
+  fullscreenBtn.addEventListener("click", () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen?.() ??
+        document.documentElement.webkitRequestFullscreen?.();
+      fullscreenBtn.querySelector(".icon-expand").style.display = "none";
+      fullscreenBtn.querySelector(".icon-exit").style.display = "block";
+    } else {
+      document.exitFullscreen?.() ?? document.webkitExitFullscreen?.();
+      fullscreenBtn.querySelector(".icon-expand").style.display = "block";
+      fullscreenBtn.querySelector(".icon-exit").style.display = "none";
+    }
+  });
+
+  document.addEventListener("fullscreenchange", () => {
+    const expandIcon = fullscreenBtn.querySelector(".icon-expand");
+    const exitIcon = fullscreenBtn.querySelector(".icon-exit");
+    if (document.fullscreenElement) {
+      expandIcon.style.display = "none";
+      exitIcon.style.display = "block";
+    } else {
+      expandIcon.style.display = "block";
+      exitIcon.style.display = "none";
+    }
+  });
 
   // Keyboard navigation
   document.addEventListener("keydown", (e) => {
